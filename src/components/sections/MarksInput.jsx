@@ -86,7 +86,17 @@ const [fourSubjectValue, setFourSubjectValue] = useState(initialFourSubjectMarks
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return []
     const query = searchQuery.toLowerCase()
+    const isRelatedToTab = (uni) => {
+      if (activeTab === 'subjects') {
+        return uni.subjectCombination === '4-subjects' ||
+               uni.subjectCombination === 'multiple'
+      }
+      return uni.subjectCombination === '6-subjects' ||
+             uni.subjectCombination === '6-subjects-or-2' ||
+             uni.subjectCombination === 'multiple'
+    }
     return universities
+      .filter(isRelatedToTab)
       .filter(uni => 
         uni.nameMy?.toLowerCase().includes(query) ||
         uni.nameEn?.toLowerCase().includes(query) ||
@@ -94,7 +104,7 @@ const [fourSubjectValue, setFourSubjectValue] = useState(initialFourSubjectMarks
         uni.locationEn?.toLowerCase().includes(query)
       )
       .slice(0, 8)
-  }, [searchQuery])
+  }, [searchQuery, activeTab])
 
   const toggleSearch = () => {
     setShowSearch(!showSearch)

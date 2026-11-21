@@ -60,6 +60,7 @@ const handleFourSubjectSubmit = useCallback((newMarks) => {
   const handleMarksModeChange = useCallback((newMode) => {
     setMarksMode(newMode)
     setFilter('all')
+    setSelectedUniversity(null)
   }, [])
 
   const handleUniversitySelect = useCallback((university) => {
