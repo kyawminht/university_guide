@@ -119,3 +119,7 @@ Thumbs.db
 dist/
 assets/
 !public/assets/
+
+# Data package build output
+packages/*/dist/
+*.tgz

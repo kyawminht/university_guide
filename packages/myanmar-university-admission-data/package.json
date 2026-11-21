@@ -1,0 +1,49 @@
+{
+  "name": "myanmar-university-admission-data",
+  "version": "2025.0.0",
+  "description": "Open-source Myanmar university admission requirements, majors, and locations.",
+  "type": "module",
+  "main": "./dist/universities.js",
+  "module": "./dist/universities.js",
+  "exports": {
+    ".": "./dist/universities.js",
+    "./years/*": "./dist/admission-years/*.js",
+    "./json": "./dist/universities.json",
+    "./json/*": "./dist/data/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "DATA_LICENSE"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "myanmar",
+    "university",
+    "admission",
+    "education",
+    "matriculation",
+    "dataset",
+    "open-data"
+  ],
+  "author": "University Guide contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyawminht/university_guide.git",
+    "directory": "packages/myanmar-university-admission-data"
+  },
+  "bugs": {
+    "url": "https://github.com/kyawminht/university_guide/issues"
+  },
+  "homepage": "https://github.com/kyawminht/university_guide#readme",
+  "scripts": {
+    "build": "node ../../scripts/build-data-package.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

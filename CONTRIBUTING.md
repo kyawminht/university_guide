@@ -168,6 +168,29 @@ Do not rename an `id` after it is published. Year files use it.
 - [ ] `npm run build` passes.
 - [ ] No app code was changed.
 
+## Publish the npm package
+
+The data is also published as an npm package:
+
+```bash
+npm install myanmar-university-admission-data
+```
+
+The package lives in `packages/myanmar-university-admission-data/`. It is built from `src/data/` at publish time.
+
+Before publishing a new year, bump `version` in `packages/myanmar-university-admission-data/package.json` (for example `2025.0.0` to `2026.0.0`).
+
+```bash
+npm login
+npm run publish:data
+```
+
+To preview what will be published without uploading:
+
+```bash
+npm run pack:data
+```
+
 ## License
 
 By contributing, you agree that your work is shared under the MIT License in this repository.

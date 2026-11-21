@@ -138,6 +138,16 @@ Special Admission (Direct Application)
 
     Myanmar Institute of Information Technology (MIIT)
 
+## Data package
+
+The university data is available as an open-source npm package:
+
+```bash
+npm install myanmar-university-admission-data
+```
+
+See `packages/myanmar-university-admission-data/README.md` for usage, and `CONTRIBUTING.md` for updating marks for a new year.
+
 📋 Sample Data Entry
 Your Marks	Eligible Universities Example
 480+ (6 subjects)	Medical, Dental, UCSY, YUFL, Yangon University
