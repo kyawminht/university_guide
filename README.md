@@ -184,9 +184,19 @@ https://uni-winkwint.vercel.app/
     For final admission decisions, always refer to official sources
 
 
+## Contributing
+
+University requirements change every year. The catalog is split by category in `src/data/universities/`, and each new admission year only needs a small override file in `src/data/admission-years/`.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to use the data in your own project, update marks for a new year, and submit changes.
+
+```bash
+npm run validate:data
+```
+
 📄 License
 
-MIT — Free for educational and non-commercial use.
+MIT — see [LICENSE](LICENSE) for details.
 
 
 🙏 Acknowledgments
