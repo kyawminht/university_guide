@@ -8,6 +8,7 @@ import FilterBar from './components/sections/FilterBar'
 import ResultsList from './components/sections/ResultsList'
 import WarningBanner from './components/sections/WarningBanner'
 import Footer from './components/layout/Footer'
+import UniversityCard from './components/university/UniversityCard'
 import { universities } from './data/universities'
 import { filterUniversities, getUniqueTypes } from './lib/utils'
 
@@ -20,6 +21,7 @@ export default function App() {
 
   const [filter, setFilter] = useState('all')
   const [marksMode, setMarksMode] = useState('6-subjects')
+  const [selectedUniversity, setSelectedUniversity] = useState(null)
   
   const eligibleUniversities = marks !== null 
     ? filterUniversities(universities, marks, filter, marksMode)
@@ -60,6 +62,10 @@ const handleFourSubjectSubmit = useCallback((newMarks) => {
     setFilter('all')
   }, [])
 
+  const handleUniversitySelect = useCallback((university) => {
+    setSelectedUniversity(university)
+  }, [])
+
   return (
     <>
       <Helmet>
@@ -94,10 +100,30 @@ const handleFourSubjectSubmit = useCallback((newMarks) => {
             onMarksSubmit={handleMarksSubmit}
             onFourSubjectSubmit={handleFourSubjectSubmit}
             onModeChange={handleMarksModeChange}
+            onUniversitySelect={handleUniversitySelect}
             marks={marks}
             initialSixSubjectMarks={marks?.['6-subjects'] ?? 240}
             initialFourSubjectMarks={marks?.['4-subjects'] ?? 240}
           />
+          
+          {selectedUniversity && (
+            <div className="mb-4">
+              <div className="flex items-center justify-between mb-2 px-1">
+                <h3 className="text-sm font-semibold text-app-text dark:text-dark-text">
+                  ရှာဖွေထားသော တက္ကသိုလ် — လိုအပ်ချက် {selectedUniversity.requiredMarks ?? 'ယှဉ်ပြိုင်'}
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => setSelectedUniversity(null)}
+                  className="text-xs text-app-muted hover:text-app-text dark:hover:text-dark-text"
+                  aria-label="ပိတ်ရန်"
+                >
+                  ✕ ပိတ်ရန်
+                </button>
+              </div>
+              <UniversityCard university={selectedUniversity} userMarks={marks} />
+            </div>
+          )}
           
           {marks !== null && (
             <>

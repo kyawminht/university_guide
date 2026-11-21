@@ -5,6 +5,7 @@ export default function MarksInput({
   onMarksSubmit, 
   onFourSubjectSubmit, 
   onModeChange,
+  onUniversitySelect,
   initialSixSubjectMarks = 240, 
   initialFourSubjectMarks = 240 
 }) {
@@ -97,6 +98,12 @@ const [fourSubjectValue, setFourSubjectValue] = useState(initialFourSubjectMarks
 
   const toggleSearch = () => {
     setShowSearch(!showSearch)
+    setSearchQuery('')
+  }
+
+  const handleUniversitySelect = (university) => {
+    onUniversitySelect?.(university)
+    setShowSearch(false)
     setSearchQuery('')
   }
 
@@ -209,13 +216,15 @@ const [fourSubjectValue, setFourSubjectValue] = useState(initialFourSubjectMarks
             {searchResults.length > 0 && (
               <div className="mt-2 bg-white dark:bg-dark-card border border-app-border dark:border-dark-border rounded-lg shadow-lg max-h-64 overflow-y-auto">
                 {searchResults.map((uni) => (
-                  <div
+                  <button
                     key={uni.id}
-                    className="px-4 py-3 hover:bg-app-bg dark:hover:bg-dark-bg cursor-pointer border-b border-app-border dark:border-dark-border last:border-0 transition-colors"
+                    type="button"
+                    onClick={() => handleUniversitySelect(uni)}
+                    className="w-full text-left px-4 py-3 hover:bg-app-bg dark:hover:bg-dark-bg cursor-pointer border-b border-app-border dark:border-dark-border last:border-0 transition-colors"
                   >
                     <div className="font-medium text-app-text dark:text-dark-text">{uni.nameMy}</div>
                     <div className="text-sm text-app-muted dark:text-dark-muted">{uni.nameEn} • {uni.locationMy}</div>
-                  </div>
+                  </button>
                 ))}
               </div>
             )}
@@ -329,13 +338,15 @@ const [fourSubjectValue, setFourSubjectValue] = useState(initialFourSubjectMarks
             {searchResults.length > 0 && (
               <div className="mt-2 bg-white dark:bg-dark-card border border-app-border dark:border-dark-border rounded-lg shadow-lg max-h-64 overflow-y-auto">
                 {searchResults.map((uni) => (
-                  <div
+                  <button
                     key={uni.id}
-                    className="px-4 py-3 hover:bg-app-bg dark:hover:bg-dark-bg cursor-pointer border-b border-app-border dark:border-dark-border last:border-0 transition-colors"
+                    type="button"
+                    onClick={() => handleUniversitySelect(uni)}
+                    className="w-full text-left px-4 py-3 hover:bg-app-bg dark:hover:bg-dark-bg cursor-pointer border-b border-app-border dark:border-dark-border last:border-0 transition-colors"
                   >
                     <div className="font-medium text-app-text dark:text-dark-text">{uni.nameMy}</div>
                     <div className="text-sm text-app-muted dark:text-dark-muted">{uni.nameEn} • {uni.locationMy}</div>
-                  </div>
+                  </button>
                 ))}
               </div>
             )}

@@ -14,10 +14,11 @@ export default function UniversityCard({ university, userMarks = {} }) {
     }
     
     let userMark = 0
+    const subjectCombination = major.subjectCombination || university.subjectCombination
     
-    if (major.subjectCombination === '4-subjects') {
+    if (subjectCombination === '4-subjects') {
       userMark = safeUserMarks['4-subjects'] || 0
-    } else if (major.subjectCombination === '2-subjects') {
+    } else if (subjectCombination === '2-subjects') {
       userMark = safeUserMarks['2-subjects'] || 0
     } else {
       userMark = safeUserMarks['6-subjects'] || 0
